@@ -1,9 +1,10 @@
 @font-face{
-  font-family: yekan;
-  src: url("/font/Yekan.woff");
+  font-family: yekan,parastoo;
+  src: url("./assets/font/Yekan.woff"),url("./assets/font/Parastoo.woff");
 }
+
 :root {
-  font-family: yekan,Helvetica, sans-serif;
+  font-family: yekan,parastoo,Helvetica, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,7 +14,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
+
 *{
   margin: 0;
   padding: 0;
