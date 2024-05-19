@@ -8,62 +8,51 @@ const Home = React.lazy(() => import("../pages/home/home"));
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Switch, useMediaQuery } from "@mui/material";
+import { ImgMediaCard } from "pages/home/partials";
 
 const App: React.FC = () => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [mode, setMode] = useState(prefersDarkMode);
-  const darkTheme = createTheme({
-    palette: {
-      mode: mode ? "dark" : "light",
-    },
-  });
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Suspense>
-                <Layout />
-              </Suspense>
-            }
-            children={
-              <Route
-                path="/"
-                element={
-                  <Suspense>
-                    <Home
-                      children={<Switch onClick={() => setMode(!mode)} />}
-                    />
-                  </Suspense>
-                }
-              />
-            }
-          />
-          {/* <Route
+    <Router>
+      <Routes>
+        <Route
           path="/"
           element={
-            <Suspense >
+            <Suspense>
               <Layout />
             </Suspense>
           }
           children={
-          <Route
-              path="/home"
+            <Route
+              path="/"
               element={
-                <Suspense >
+                <Suspense>
                   <Home />
                 </Suspense>
               }
             />
           }
-        /> */}
-        </Routes>
-      </Router>
-    </ThemeProvider>
+        />
+        <Route
+          path="/"
+          element={
+            <Suspense>
+              <Layout />
+            </Suspense>
+          }
+          children={
+            <Route
+              path="/card"
+              element={
+                <Suspense>
+                  <ImgMediaCard />
+                </Suspense>
+              }
+            />
+          }
+        />
+      </Routes>
+    </Router>
   );
 };
 
