@@ -40,10 +40,13 @@ export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue})
       sx={{
         width: "100%",
         backgroundColor: "white",
-        boxShadow: "0 -10px 10px -5px rgba(0, 0, 0, 0.5)",
-        borderTop: ".001rem solid",
-        borderColor: 'rgb(150,150,150)',
+        boxShadow:"-3px 0px 10px rgba(200,200,200,1)",
         borderRadius: '.1rem',
+        position:'fixed',
+        bottom:'0',
+        left:'0',
+        right:'0',
+        zIndex:'10',
       }}
       value={value}
       onChange={handleChange}

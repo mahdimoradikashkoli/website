@@ -4,8 +4,34 @@ import { Swiper, SwiperSlide } from "swiper/react";
 export const TheNewest = () => {
   return (
     <Swiper
-    slidesPerView={1.5}
-    spaceBetween={3}>
+    slidesPerView={1}
+    spaceBetween={3}
+    breakpoints={{
+      320:{
+        slidesPerView:1.5,
+      },
+      480:{
+        slidesPerView:2,
+      },
+      568:{
+        slidesPerView:2.5,
+      },
+      680:{
+        slidesPerView:3.3,
+      },
+      780:{
+        slidesPerView:3.5,
+      },
+      823:{
+        slidesPerView:4,
+      },
+      1200:{
+        slidesPerView:5,
+      },
+      1400:{
+        slidesPerView:6,
+      },
+    }}>
       <SwiperSlide>
         <CardTwo id="1" altForImage="احیای لباس یا کمترین هزیته"
         description="احیای لباس هایتان با کمترین هزینه"

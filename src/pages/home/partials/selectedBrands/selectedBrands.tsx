@@ -4,7 +4,30 @@ import { SwiperSlide, Swiper } from "swiper/react";
 export const SelectedBrands = () => {
   return (
     <Swiper
-    slidesPerView={3}>
+    slidesPerView={3}
+    breakpoints={{
+      320:{
+        slidesPerView:3,
+      },
+      480:{
+        slidesPerView:4,
+      },
+      568:{
+        slidesPerView:5,
+      },
+      768:{
+        slidesPerView:6,
+      },
+      920:{
+        slidesPerView:7,
+      },
+      1200:{
+        slidesPerView:8,
+      },
+      1400:{
+        slidesPerView:9,
+      },
+    }}>
       <SwiperSlide>
         <Box
           sx={{

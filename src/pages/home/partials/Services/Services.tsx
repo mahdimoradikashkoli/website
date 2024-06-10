@@ -8,7 +8,7 @@ export const Services = () => {
         marginTop: "2rem",
         display: "flex",
         alignItems: "center",
-        gap: ".8rem",
+        justifyContent:'space-evenly'
       }}
     >
       <ComponentServices

@@ -1,0 +1,41 @@
+.category2 {
+    display: flex;
+    align-items: center;
+    color: rgb(50, 50, 50);
+    margin-bottom: 0.5rem;
+  }
+  .boxProduct {
+    display: flex;
+    margin-top: 0.5rem;
+    width: 80%;
+    height: 21.2rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: 0.3rem;
+  }
+  .boxProduct::-webkit-scrollbar-thumb {
+    background-color: green; /* رنگ انگشت اسکرول‌بار */
+    border-radius: 9px; /* گرد کردن گوشه‌های انگشت اسکرول‌بار */
+    border: 2px solid rgb(103, 163, 68); /* اضافه کردن مرز به انگشت اسکرول‌بار */
+  }
+  .boxProduct::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: rgb(172, 172, 163);
+  }
+  .boxProduct::-webkit-scrollbar:hover {
+    background-color: rgb(112, 112, 110);
+  }
+  
+  .productImage::-webkit-scrollbar {
+    width: 9px;
+    background-color: rgb(172, 172, 163);
+    border-radius: 5px;
+  }
+  .productImage::-webkit-scrollbar-thumb {
+    background-color: green; /* رنگ انگشت اسکرول‌بار */
+    border-radius: 10px; /* گرد کردن گوشه‌های انگشت اسکرول‌بار */
+    border: 2px solid rgb(103, 163, 68);
+  }
+  

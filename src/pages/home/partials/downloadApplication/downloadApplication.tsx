@@ -26,6 +26,9 @@ export const DownloadApplication = () => {
       >
         دریافت اپلیکیشن از
         <Box
+        style={{
+          mixBlendMode:"color-burn"
+        }}
           width={"3rem"}
           height={"1.5rem"}
           component={"img"}
