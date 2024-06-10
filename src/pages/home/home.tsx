@@ -1,6 +1,5 @@
-// import { ToggleThem } from "@ui/*"
-// import {ToggleThem} from "modules/helpers/ui/component/toggleThem"
-import { Box, Button, Container } from "@mui/material";
+import style from "./home.module.css";
+import { Box, Button, Container, useMediaQuery, useTheme } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import arrowLeftKey from "/icons/left-arrow-svgrepo-com.svg";
 import fireIcon from "/icons/fire.svg";
@@ -11,6 +10,7 @@ import {
   CountDownTimer,
   DownloadApplication,
   Grouping,
+  HeaderResponsive,
   ImgMediaCard,
   MaySlider,
   SelectedBrands,
@@ -25,103 +25,139 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { LabelBottomNavigation } from "components";
+import { LabelBottomNavigation, SearchComponent } from "components";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Home: React.FC = () => {
-  const [topValue,setTopValue]=useState<string>("1.5rem")
+  const [topValue, setTopValue] = useState<string>("2.5rem");
   const removeGifBanner = () => {
     document.getElementById("banner")!.style.display = "none";
-    if( document.getElementById("banner")!.style.display === "none"){
-      setTopValue("0")
-    }else{
-      setTopValue("1.6rem")
+    if (document.getElementById("banner")!.style.display === "none") {
+      setTopValue("0");
+    } else {
+      setTopValue("2.5rem");
     }
     // console.log(topValue,marginValue);
   };
- 
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const handleShowSearchNavbar = () => {
+    const searchNavbar = document.getElementById("search");
+
+    searchNavbar!.style.display === "block"
+      ? (searchNavbar!.style.display = "none")
+      : (searchNavbar!.style.display = "block");
+  };
+
   return (
     <>
+      {/* تبلیغ چسبیده به بالای صفحه */}
       <Box
         id="banner"
+        className={style.banner}
         sx={{
           position: "sticky",
           zIndex: "20",
           top: "0",
           left: "0",
           right: "0",
+          width: "100%",
+          height: "2.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <img
-          width={"100%"}
+          className={style.gif}
+          style={{
+            width: "100%",
+            height: "40px",
+          }}
           src="https://www.banimode.com/img/cms/030229/1716020397.gif"
           alt="promition banner"
         />
+
         <ClearIcon
+          className={style.clearIcon}
           onClick={removeGifBanner}
           style={{
             position: "absolute",
-            zIndex: "20",
+            zIndex: "21",
             left: "1rem",
-            top: "auto",
-            bottom: "auto",
             color: "white",
+            cursor: "pointer",
           }}
         />
       </Box>
 
       {/* هدر سایت */}
       <Box
-        component={"header"}
+        className={style.header1}
         sx={{
           width: "100%",
-          zIndex: "10",
+          zIndex: "21",
           backgroundColor: "rgb(255,255,255 )",
           position: "sticky",
           top: topValue,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: ".7rem 1rem",
         }}
       >
-        <Box component={"nav"}>
-          <Box
-            style={{
-              listStyleType: "none",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: ".5rem",
-            }}
-            component={"ul"}
-          >
-            <Box component={"li"}>
-              <FavoriteBorderIcon style={{ color: "rgb(80,80,80)" }} />
-            </Box>
-            <Box component={"li"}>
-              <SearchIcon style={{ color: "rgb(80,80,80)" }} />
+        <Box
+          component={"header"}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: ".7rem 1rem",
+          }}
+        >
+          <Box component={"nav"}>
+            <Box
+              style={{
+                listStyleType: "none",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: ".5rem",
+              }}
+              component={"ul"}
+            >
+              <Box component={"li"}>
+                <FavoriteBorderIcon style={{ color: "rgb(80,80,80)" }} />
+              </Box>
+              <Box component={"li"}>
+                <SearchIcon
+                  onClick={handleShowSearchNavbar}
+                  style={{ color: "rgb(80,80,80)" }}
+                />
+              </Box>
             </Box>
           </Box>
+          <Box component={"a"}>
+            <img
+              style={{
+                width: "8rem",
+                height: "1.5rem",
+              }}
+              loading="lazy"
+              src="/icons/logo.png"
+              alt="logo"
+            />
+          </Box>
         </Box>
-        <Box component={"a"}>
-          <img
-            style={{
-              width: "8rem",
-              height: "1.5rem",
-            }}
-            loading="lazy"
-            src="/icons/logo.png"
-            alt="logo"
-          />
-        </Box>
+        <SearchComponent />
       </Box>
+      {/* هدر رسپانسیو شده برای صفحات بزرگتر */}
+      <HeaderResponsive/>
+      
 
       {/* اسلایدر اول صفحه */}
-      <Box sx={{}}>{<MaySlider />}</Box>
+      <Box>{<MaySlider />}</Box>
       <Container style={{ position: "relative", marginTop: ".8rem" }}>
         {/* تایمر شمارش معکوس */}
         {<CountDownTimer />}
@@ -129,15 +165,37 @@ const Home: React.FC = () => {
       {/* نمایش محصولات شگفت انگیز به صورت اسلایدر */}
       <Box sx={{ marginTop: ".8rem" }}>
         <Swiper
-          centeredSlides={true}
           direction="horizontal"
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
-          modules={[Autoplay]}
-          spaceBetween={3}
+          spaceBetween={2}
           slidesPerView={2}
+          breakpoints={{
+            320: {
+              slidesPerView: 2,
+            },
+            380: {
+              slidesPerView: 2.5,
+            },
+            480: {
+              slidesPerView: 3,
+            },
+            640: {
+              slidesPerView: 4,
+            },
+            687: {
+              slidesPerView: 4.5,
+            },
+            1024: {
+              slidesPerView: 5,
+            },
+            1200: {
+              slidesPerView: 6,
+            },
+          }}
+          modules={[Autoplay]}
           className="mySwiper"
           pagination={{ clickable: true }}
           // onSwiper={(swiper) => console.log(swiper)}
@@ -152,7 +210,7 @@ const Home: React.FC = () => {
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
                 price={"505,000"}
-                offer="389,000تومان"
+                offer="389,000"
                 onClick={() => {}}
                 key=""
               />
@@ -169,7 +227,7 @@ const Home: React.FC = () => {
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
                 price={"505,000"}
-                offer="389,000تومان"
+                offer="389,000"
                 onClick={() => {}}
                 key=""
               />
@@ -184,7 +242,7 @@ const Home: React.FC = () => {
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
                 price={"505,000"}
-                offer="389,000تومان"
+                offer="389,000"
                 onClick={() => {}}
                 key=""
               />
@@ -201,7 +259,7 @@ const Home: React.FC = () => {
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
                 price={"1,000,000"}
-                offer="200,000تومان"
+                offer="200,000"
                 onClick={() => {}}
                 key=""
               />
@@ -216,7 +274,7 @@ const Home: React.FC = () => {
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
                 price={"505,000"}
-                offer="389,000تومان"
+                offer="389,000"
                 onClick={() => {}}
                 key=""
               />
@@ -231,7 +289,7 @@ const Home: React.FC = () => {
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
                 price={"505,000"}
-                offer="389,000تومان"
+                offer="389,000"
                 onClick={() => {}}
                 key=""
               />
@@ -246,7 +304,7 @@ const Home: React.FC = () => {
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
                 price={"505,000"}
-                offer="389,000تومان"
+                offer="389,000"
                 onClick={() => {}}
                 key=""
               />
@@ -256,7 +314,7 @@ const Home: React.FC = () => {
             <Box
               sx={{
                 maxWidth: "8.25rem",
-                height: 275,
+                height: "16rem",
                 textAlign: "center",
                 display: "flex",
                 alignItems: "cenetr",
@@ -305,9 +363,16 @@ const Home: React.FC = () => {
           </Box>
         </Box>
       </Box>
-      {/* عکس کارت هدیه */}
-      <Box sx={{ backgroundColor: "rgb(245, 245, 245)" }}>
-        <Box sx={{ marginTop: "1.5rem" }}>
+
+      <Box sx={{ backgroundColor: "rgb(245, 245, 245)", marginBottom: "4rem" }}>
+        {/* عکس کارت هدیه */}
+        <Box
+          sx={{
+            width: "100%",
+            margin: "1.4rem auto 0rem auto",
+            textAlign: "center",
+          }}
+        >
           <Box
             style={{ cursor: "pointer" }}
             maxWidth="100%"
@@ -364,7 +429,9 @@ const Home: React.FC = () => {
         </Box>
 
         {/* پیشنهاد پوشاک ها عکس به صورت اسلایدر */}
-        <Box sx={{ marginTop: "1.5rem" }}>{<Suggestion />}</Box>
+        <Box sx={{ marginTop: "1.5rem", textAlign: "center" }}>
+          {<Suggestion />}
+        </Box>
         {/* پر فروش ترین ها */}
         <Box sx={{ marginTop: "1.5rem", backgroundColor: "white" }}>
           <Container>
@@ -535,7 +602,7 @@ const Home: React.FC = () => {
               </Typography>
               <Typography
                 component={"span"}
-                fontSize={".65rem"}
+                fontSize={matches ? ".9rem" : ".65rem"}
                 color={"rgb(70,70,70)"}
                 fontStyle={"italic"}
               >
@@ -548,10 +615,12 @@ const Home: React.FC = () => {
           </Container>
         </Box>
         {/* درباره ما */}
-        <AboutUs />
-        {/* نوار پیمایش پایین صفحه */}
-        <LabelBottomNavigation initialValue="خانه" />
+        <Container>
+          <AboutUs />
+        </Container>
       </Box>
+      {/* نوار پیمایش پایین صفحه */}
+      <LabelBottomNavigation initialValue="خانه" />
     </>
   );
 };

@@ -1,18 +1,39 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ImgMediaCard } from "../../../../components/card";
 import { Box, Button } from "@mui/material";
-import {Autoplay} from "swiper/modules"
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 export const BestSellers = () => {
   return (
-    <Swiper slidesPerView={2}
-     spaceBetween={3}
-     autoplay={{
-      delay: 3500,
-      disableOnInteraction: false
-    }}
-    modules={[Autoplay]}
+    <Swiper
+      slidesPerView={2}
+      spaceBetween={3}
+      autoplay={{
+        delay: 3500,
+        disableOnInteraction: false,
+      }}
+      breakpoints={{
+        320: {
+          slidesPerView: 2,
+        },
+        480:{
+          slidesPerView:3
+        },
+        568:{
+          slidesPerView:4
+        },
+        768:{
+          slidesPerView:5
+        },
+        920:{
+          slidesPerView:6
+        },
+        1200:{
+          slidesPerView:7
+        }
+      }}
+      modules={[Autoplay]}
     >
       <SwiperSlide>
         <ImgMediaCard
@@ -82,10 +103,67 @@ export const BestSellers = () => {
         />
       </SwiperSlide>
       <SwiperSlide>
+        <ImgMediaCard
+          altForImage="تیشرت مردانه"
+          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
+          title1="koton"
+          key=""
+          price="999,0000"
+          offer="669,000"
+          giftContent="تخفیف بیشتر در بازی کهکشان میلیاری"
+          percent2="30%"
+          onClick={() => {}}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ImgMediaCard
+          altForImage="تیشرت مردانه"
+          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
+          title1="koton"
+          key=""
+          price="999,0000"
+          offer="669,000"
+          giftContent="تخفیف بیشتر در بازی کهکشان میلیاری"
+          percent2="30%"
+          onClick={() => {}}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ImgMediaCard
+          altForImage="تیشرت مردانه"
+          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
+          title1="koton"
+          key=""
+          price="999,0000"
+          offer="669,000"
+          giftContent="تخفیف بیشتر در بازی کهکشان میلیاری"
+          percent2="30%"
+          onClick={() => {}}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <ImgMediaCard
+          altForImage="تیشرت مردانه"
+          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
+          title1="koton"
+          key=""
+          price="999,0000"
+          offer="669,000"
+          giftContent="تخفیف بیشتر در بازی کهکشان میلیاری"
+          percent2="30%"
+          onClick={() => {}}
+        />
+      </SwiperSlide>
+      
+      <SwiperSlide>
         <Box
           sx={{
             maxWidth: "8.25rem",
-            height: 275,
+            height: "16rem",
             textAlign: "center",
             display: "flex",
             alignItems: "cenetr",

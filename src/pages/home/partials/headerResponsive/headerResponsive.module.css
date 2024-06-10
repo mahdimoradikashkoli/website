@@ -1,0 +1,115 @@
+@media only screen and (min-width: 800px) {
+  .header1 {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .header2 {
+    display: none;
+  }
+  .header1 {
+    display: block !important;
+    position: relative;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .searchNavbar {
+    width: 30.5rem !important;
+  }
+}
+.hidenCategory {
+  display: none !important;
+}
+.fashionAndClothing {
+  display: none !important;
+}
+.digitalGoods {
+  display: none !important;
+}
+.watchesAndJewelry {
+  display: none !important;
+}
+.sportAndTravel {
+  display: none !important;
+}
+.homeAppliances {
+  display: none !important;
+}
+.childrenAndEntertainment {
+  display: none !important;
+}
+.stationery {
+  display: none !important;
+}
+.newest {
+  display: none !important;
+}
+.brand{
+  display: none !important;
+}
+.grouping {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0rem 0rem 0.3rem 0.3rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden; /* جلوگیری از بیرون‌زدگی انیمیشن */
+}
+
+.grouping::before {
+  content: "";
+  position: absolute;
+  bottom: 2px; /* قرار دادن pseudo-element در پایین */
+  left: 0;
+  width: 100%;
+  height: 0.15rem; /* ارتفاع برابر با border */
+  background-color: rgb(89, 238, 30);
+  transform: translateX(100%);
+  transition: transform 0.5s;
+}
+
+.grouping:hover::before {
+  transform: translateX(0);
+}
+
+.scrolbar::-webkit-scrollbar {
+  width: 8px; /* عرض اسکرول‌بار */
+  background-color: rgb(172, 172, 163);
+  border-radius: 2px;
+}
+.scrolbar::-webkit-scrollbar:hover {
+  background-color: rgb(127, 127, 127);
+}
+
+.scrolbar::-webkit-scrollbar-thumb {
+  background-color: green; /* رنگ انگشت اسکرول‌بار */
+  border-radius: 8px; /* گرد کردن گوشه‌های انگشت اسکرول‌بار */
+  border: 2px solid rgb(103, 163, 68);
+}
+
+.scrolbar::-webkit-scrollbar-thumb:hover {
+  background-color: #00a000; /* رنگ اسکرول‌بار در حالت هاور */
+}
+.brandName::-webkit-scrollbar {
+  width: 8px; /* عرض اسکرول‌بار */
+  background-color: rgb(172, 172, 163);
+  border-radius: 2px;
+}
+.brandName::-webkit-scrollbar-thumb {
+  width: 8px;
+  border: 2px solid rgb(107, 169, 107);
+  background-color: rgb(17, 154, 22);
+  border-radius: 5px;
+}
+.brandLogo::-webkit-scrollbar{
+  width: 8px; /* عرض اسکرول‌بار */
+  background-color: rgb(172, 172, 163);
+  border-radius: 2px;
+}
+.brandLogo::-webkit-scrollbar-thumb {
+  width: 8px;
+  border: 2px solid rgb(107, 169, 107);
+  background-color: rgb(17, 154, 22);
+  border-radius: 5px;
+}

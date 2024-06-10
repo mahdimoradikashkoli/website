@@ -1,19 +1,20 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useState } from "react";
 
 export const AboutUs = () => {
+  const theme=useTheme()
+  const matches=useMediaQuery(theme.breakpoints.up("sm"))
   const [show, setShow] = useState(false);
   const handleOnClick = () => {
     setShow(!show);
   };
   return (
-    <Box sx={{ marginTop: "1.5rem", width: "100%",position:'relative'}}>
+    <Box sx={{ marginTop: "1.5rem", width: "100%", position: "relative" }}>
       <Typography fontWeight={"bold"}>درباره بانی مد</Typography>
       <Box
         sx={{
-          fontSize: ".6rem",
           fontWeight: "bold",
           fontStyle: "italic",
           color: "#898989",
@@ -22,6 +23,7 @@ export const AboutUs = () => {
           wordSpacing: ".2rem",
           marginTop: ".8rem",
           position: "relative",
+          ...(matches ? {fontSize:'.7rem'}:{fontSize:'.62rem'}),
           ...(show
             ? {}
             : {
@@ -34,14 +36,19 @@ export const AboutUs = () => {
                   width: "100%",
                   height: "4rem", // Adjust height as needed
                   background:
-                    "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))",
+                    "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, .7))",
                 },
               }),
         }}
       >
         1393 کار خود را به صورت تخصصی در زمینه پوشاک و سبک زندگی آغاز کرد. در
         این سال‌ها، بانی مد با همکاری بیشتر از 700 برند، توانسته است تجربه‌ای
-        خوب از خرید آنلاین لباس و پوشاک برای مخاطبان خود رقم بزند.
+        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
+        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
+        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
+        متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
+        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
+        
         <Box id="text" sx={show ? { display: "block" } : { display: "none" }}>
           مهم‌ترین رسالت بانی ‌مد بهبود کیفیت سبک زندگی است و رضایت اکثریت
           مخاطبان این فروشگاه اینترنتی، گواهی بر این ادعاست؛ رضایتی که
@@ -158,33 +165,37 @@ export const AboutUs = () => {
       </Box>
       <Box
         sx={{
-          position:'relative',
-          bottom:'0',
-          left:'0',
-          right:'0',
+          position: "relative",
+          bottom: "0",
+          left: "0",
+          right: "0",
           width: "100%",
-          backgroundColor: "white",
-          padding:'.4rem 0rem',
-          boxShadow: "10 10 10 white -10 -10 10 white",
           display: "flex",
           alignItems: "center",
           justifyContent: "cenetr",
+          padding:'.5rem 0'
         }}
       >
-        <Box onClick={handleOnClick} sx={{cursor:"pointer", display: "flex", alignItems: "center", margin: "0 auto" }}>
+        <Box
+          onClick={handleOnClick}
+          sx={{
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            margin: "0 auto",
+          }}
+        >
           <Box
             sx={{
-              backgroundColor: "white",
-              width:"100%",
+              width: "100%",
               border: "none",
               outline: "none",
               fontSize: "1rem",
               color: "green",
               fontStyle: "italic",
-              cursor:"pointer"
+              cursor: "pointer",
             }}
             component={"button"}
-            
           >
             {show ? "نمایش کمتر" : "نمایش بیشتر"}
           </Box>

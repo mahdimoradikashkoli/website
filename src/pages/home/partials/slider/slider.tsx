@@ -12,9 +12,17 @@ import "swiper/css";
 import "swiper/css/effect-flip";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { Box } from "@mui/material";
 
 export const MaySlider = () => {
   return (
+    <>
+    <Box>
+      
+    </Box>
+
+    
+    {/* اسلایدر برای عرض تا 800پیکسل */}
     <Swiper
       effect={"flip"}
       grabCursor={true}
@@ -75,5 +83,6 @@ export const MaySlider = () => {
         />
       </SwiperSlide>
     </Swiper>
+    </>
   );
 };

@@ -10,3 +10,4 @@ export * from "./ContactUs";
 export * from "./downloadApplication";
 export * from "./Services";
 export * from "./aboutUs";
+export * from "./headerResponsive";

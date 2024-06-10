@@ -20,8 +20,8 @@ export const ImgMediaCard: React.FC<imgMediaCardType> = ({
   suggestion,
 }) => {
   return (
-    <Box key={key} sx={{ width: "8.25rem", height: "15.065125rem" }}>
-      <Box sx={{ position: "relative", width: "100%", height: "9.5625rem" }}>
+    <Box key={key} sx={{ width: "8.25rem", height: "16rem"}}>
+      <Box sx={{ position: "relative", width: "100%", height: "9.5625rem" ,boxShadow:'0px .005px .5px rgb(200,200,200)'}}>
         {percent ? (
           <Typography
             style={{
@@ -67,7 +67,7 @@ export const ImgMediaCard: React.FC<imgMediaCardType> = ({
         {suggestion && (
           <Box
             sx={{
-              width:"100%",
+              width: "100%",
               position: "absolute",
               bottom: ".4rem",
               left: "0",
@@ -78,17 +78,13 @@ export const ImgMediaCard: React.FC<imgMediaCardType> = ({
               color: "white",
               display: "flex",
               alignItems: "center",
-              gap:".2rem"
+              gap: ".2rem",
             }}
           >
             <RedeemIcon
               style={{ width: "1rem", height: "1rem", color: "white" }}
             />
-            <Typography
-              fontSize={".7rem"}
-              fontWeight={"600"}
-              color={"white"}
-            >
+            <Typography fontSize={".7rem"} fontWeight={"600"} color={"white"}>
               1خرید + 1 هدیه جین و ست
             </Typography>
           </Box>
@@ -130,6 +126,9 @@ export const ImgMediaCard: React.FC<imgMediaCardType> = ({
               fontSize: ".8rem",
               textAlign: "center",
               color: "rgb(241, 100, 34)",
+              bottom:".4rem"
+              ,border:'.001px solid rgb(230,230,230)',
+              borderRadius:'.2rem'
             }}
           >
             {available}
@@ -137,24 +136,40 @@ export const ImgMediaCard: React.FC<imgMediaCardType> = ({
         )}
         <Box
           sx={{
-            marginTop: "1rem",
+            width: "100%",
+            height:"6rem",
             display: "flex",
             flexDirection: "column",
-            gap: ".1rem",
+            position:'relative'
+            // gap: ".1rem",
           }}
         >
-          <Typography component={"span"} fontSize={".7rem"} fontWeight={"600"}>
-            {title1}
-          </Typography>
-          <Typography fontStyle={"italic"} style={{ fontSize: ".69rem", color: "rgb(70,70,70)" }}>
-            {description}
-          </Typography>
+          <Box>
+            <Typography
+              component={"span"}
+              fontSize={".7rem"}
+              fontWeight={"600"}
+            >
+              {title1}
+            </Typography>
+            <Typography
+              fontStyle={"italic"}
+              style={{ fontSize: ".69rem", color: "rgb(70,70,70)" }}
+            >
+              {description}
+            </Typography>
+          </Box>
+
           <Box
             sx={{
+              position:'absolute',
+              bottom:'0',
+              right:'0',
+              left:'0',
               display: "flex",
               alignItems: "center",
               gap: ".4rem",
-              marginTop: ".8rem",
+              // marginTop:'.7rem'
             }}
           >
             <Typography
@@ -172,7 +187,6 @@ export const ImgMediaCard: React.FC<imgMediaCardType> = ({
                   fontSize={".7rem"}
                   fontWeight={"600"}
                 >
-                  {" "}
                   {offer}
                 </Typography>
               )}
@@ -202,7 +216,7 @@ export const ImgMediaCard: React.FC<imgMediaCardType> = ({
                   component={"span"}
                   fontSize=".6rem"
                   fontWeight={"600"}
-                  lineHeight={".6rem"}
+                  lineHeight={".5rem"}
                 >
                   مان
                 </Typography>
