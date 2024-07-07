@@ -12,13 +12,14 @@ export const Suggestion = () => {
         slidesPerView={1}
         modules={[Pagination]}
         pagination={true}
+        style={{cursor:'pointer'}}
       >
         <SwiperSlide>
           <Box
             borderRadius={".3rem"}
             maxWidth={"-webkit-fill-available"}
             component={"img"}
-            src="https://www.banimode.com/img/cms/030119/1712514434.jpg"
+            src="public/imageForHome/poshak/poshakmardaneh.png"
             alt="پوشاک مردانه"
           ></Box>
         </SwiperSlide>
@@ -27,7 +28,7 @@ export const Suggestion = () => {
             borderRadius={".3rem"}
             maxWidth={"-webkit-fill-available"}
             component={"img"}
-            src="https://www.banimode.com/img/cms/030119/1712514533.jpg"
+            src="public/imageForHome/poshak/poshakzananeh.png"
             alt="پوشاک زنانه"
           ></Box>
         </SwiperSlide>
@@ -36,7 +37,7 @@ export const Suggestion = () => {
             borderRadius={".3rem"}
             maxWidth={"-webkit-fill-available"}
             component={"img"}
-            src="https://www.banimode.com/img/cms/030119/1712514540.jpg"
+            src="public/imageForHome/poshak/poshakbacheganeh.png"
             alt="پوشاک بچه گانه"
           ></Box>
         </SwiperSlide>

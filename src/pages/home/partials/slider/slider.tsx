@@ -44,42 +44,42 @@ export const MaySlider = () => {
         <img
           style={{ width: "100%" }}
           alt="دیجیتال"
-          src="https://www.banimode.com/img/cms/030213/1714633499.jpg"
+          src="public/imageForHome/slider/1714569207.jpg"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           style={{ width: "100%" }}
           alt="دیجیتال"
-          src="https://www.banimode.com/img/cms/030212/1714569207.jpg"
+          src="public/imageForHome/slider/1714633499.jpg"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           style={{ width: "100%" }}
           alt="دیجیتال"
-          src="https://www.banimode.com/img/cms/030213/1714633499.jpg"
+          src="public/imageForHome/slider/slde6.png"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           style={{ width: "100%" }}
           alt="دیجیتال"
-          src="https://www.banimode.com/img/cms/030213/1714633499.jpg"
+          src="public/imageForHome/slide4.png"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           style={{ width: "100%" }}
           alt="دیجیتال"
-          src="https://www.banimode.com/img/cms/030213/1714633499.jpg"
+          src="public/imageForHome/slider/slide3.png"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           style={{ width: "100%" }}
           alt="دیجیتال"
-          src="https://www.banimode.com/img/cms/030213/1714633499.jpg"
+          src="public/imageForHome/slider/1720337323.png"
         />
       </SwiperSlide>
     </Swiper>

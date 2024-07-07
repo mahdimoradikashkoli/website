@@ -35,32 +35,32 @@ export const Grouping = () => {
         <SwiperSlide>
           <ComponentForGrouping
             categoryName="پوشاک بچه گانه"
-            imageAddresss="https://www.banimode.com/img/cms/030120/1712594678.jpg"
+            imageAddresss="public/imageForHome/grouping/1712594678.png"
           />
         </SwiperSlide>
         <SwiperSlide>
         <ComponentForGrouping
             categoryName="مانتو و پانچو"
-            imageAddresss="https://www.banimode.com/img/cms/030120/1712594497.jpg"
+            imageAddresss="public/imageForHome/grouping/imag.png"
           />
         </SwiperSlide>
         <SwiperSlide>
         <ComponentForGrouping
             categoryName="ساعت مردانه و زنانه"
-            imageAddresss="https://www.banimode.com/img/cms/020705/1695832447.jpg"
+            imageAddresss="public/imageForHome/grouping/watch22.png"
           />
          
         </SwiperSlide>
         <SwiperSlide>
         <ComponentForGrouping
             categoryName="لباس زیر"
-            imageAddresss="https://www.banimode.com/img/cms/020705/1695832454.jpg"
+            imageAddresss="public/imageForHome/grouping/lebas.png"
           />
         </SwiperSlide>
         <SwiperSlide>
         <ComponentForGrouping
             categoryName="کالای خواب و استراحت"
-            imageAddresss="https://www.banimode.com/img/cms/020705/1695832439.jpg"
+            imageAddresss="public/imageForHome/grouping/kala.png"
           />
         </SwiperSlide>
       </Swiper>

@@ -38,7 +38,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh1.png"
           description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
           title1="koton"
           key=""
@@ -52,7 +52,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1715986-home_default/194887.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh2.png"
           description="پیراهن استین بلند مردانه جوتی جینز jootijeans کد ldwmkj"
           title1="JootiJeans"
           key=""
@@ -64,7 +64,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1647163-home_default/167074.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh3.png"
           description="تیشرت مردانه jootijeans کد32vffqe34"
           title1="JootiJeans"
           key=""
@@ -76,7 +76,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1142610-home_default/107060.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh1.png"
           description="شومیز کوتاه زنانه koton کد 1234dsxxax"
           title1="koton"
           key=""
@@ -91,7 +91,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh4.png"
           description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
           title1="koton"
           key=""
@@ -105,7 +105,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh4.png"
           description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
           title1="koton"
           key=""
@@ -119,7 +119,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh1.png"
           description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
           title1="koton"
           key=""
@@ -133,7 +133,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh4.png"
           description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
           title1="koton"
           key=""
@@ -147,7 +147,7 @@ export const BestSellers = () => {
       <SwiperSlide>
         <ImgMediaCard
           altForImage="تیشرت مردانه"
-          imageAddress="https://www.banimode.com/1671382-home_default/186427.jpg"
+          imageAddress="public/imageForHome/bestSellers/sh1.png"
           description="تیشرت مردانه کوتونkoton کد32vffqeeqwd"
           title1="koton"
           key=""
