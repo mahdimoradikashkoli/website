@@ -8,8 +8,9 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import HomeIcon from '@mui/icons-material/Home';
 interface NavigationProps {
   initialValue: string;
+  className:string
 }
-export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue}) => {
+export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue,className}) => {
   // مقدار اولیه را از Local Storage بخوانید یا "خانه" را به عنوان مقدار پیش‌فرض تنظیم کنید
   const [value, setValue] = React.useState(() => {
     return localStorage.getItem("navigationValue") || "خانه";
@@ -37,6 +38,7 @@ export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue})
 
   return (
     <BottomNavigation
+    className={className}
       sx={{
         width: "100%",
         backgroundColor: "white",

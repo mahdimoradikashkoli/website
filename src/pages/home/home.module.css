@@ -6,25 +6,51 @@
     position: relative !important;
   }
   .header1 {
-    display: none !important;
+    display: none !important ;
+    /* position: relative; */
   }
-}
-@media only screen and (max-width:800px){
-  .header2{
+  .slider {
     display: none;
   }
-  .header1 {
+  .sliderAfter800px {
     display: block !important;
-    position: relative ;
+  }
+  .footer1 {
+    display: none;
+  }
+  .aboutUs {
+    display: none !important;
+  }
+  .bottomNavigation {
+    display: none !important;
+  }
+  .footerAfter800px {
+    display: block !important;
+  }
+  .copyRight {
+    display: block !important  ;
+  }
+  .header2 {
+    display: block !important ;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .header1 {
+    display: block ;
+    position: sticky;
   }
   .banner {
     position: sticky !important;
   }
+  .header2 {
+    display: none ;
+  }
+
+  
 }
 @media only screen and (min-width: 1000px) {
   .searchNavbar {
     width: 30.5rem !important;
   }
 }
-
-

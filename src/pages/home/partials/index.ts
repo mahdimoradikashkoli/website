@@ -11,3 +11,4 @@ export * from "./downloadApplication";
 export * from "./Services";
 export * from "./aboutUs";
 export * from "./headerResponsive";
+export * from "./slideBottomOfNavigation";

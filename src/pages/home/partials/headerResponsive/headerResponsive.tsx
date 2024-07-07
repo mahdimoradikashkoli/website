@@ -23,12 +23,19 @@ import {
   Stationery,
   WatchesAndJewelry,
 } from "./partials";
-import { useEffect } from "react";
+import {  useEffect, useState } from "react";
+import { headerResponsiveType } from "./type";
+import { SearchComponent } from "components";
+import  cookies  from 'js-cookie';
 
-export const HeaderResponsive = () => {
+export const HeaderResponsive: React.FC<headerResponsiveType> = ({
+  className,
+}) => {
+  const {value,setValue}=useState("")
+  console.log(value)
   useEffect(() => {
-    const brand=document.querySelector<HTMLElement>(`.${style.brand}`)
-    const brandSubject=document.querySelector<HTMLElement>(".brandSubject")
+    const brand = document.querySelector<HTMLElement>(`.${style.brand}`);
+    const brandSubject = document.querySelector<HTMLElement>(".brandSubject");
     const grouping = document.querySelector(`.${style.grouping}`);
     const hidenCategory = document.querySelector<HTMLElement>(
       `.${style.hidenCategory}`
@@ -317,16 +324,16 @@ export const HeaderResponsive = () => {
       hidenCategory!.classList.add(style.hidenCategory);
     };
 
-    const showBrand=()=>{
-      brand!.classList.remove(style.brand)
-    }
-    const hideBrand=()=>{
-      brand!.classList.add(style.brand)
-    }
-    brandSubject?.addEventListener("mousemove",showBrand)
-    brandSubject?.addEventListener("mouseout",hideBrand)
-    brand?.addEventListener("mouseover",showBrand)
-    brand?.addEventListener("mouseout",hideBrand)
+    const showBrand = () => {
+      brand!.classList.remove(style.brand);
+    };
+    const hideBrand = () => {
+      brand!.classList.add(style.brand);
+    };
+    brandSubject?.addEventListener("mousemove", showBrand);
+    brandSubject?.addEventListener("mouseout", hideBrand);
+    brand?.addEventListener("mouseover", showBrand);
+    brand?.addEventListener("mouseout", hideBrand);
     grouping?.addEventListener(
       "mouseover",
       showHidenCategoryAndFashionAndclothing
@@ -376,11 +383,23 @@ export const HeaderResponsive = () => {
       hidenCategory?.removeEventListener("mouseout", hideHidenCategory);
     };
   }, []);
+  const token=cookies.get("baniToken")
 
+  const handleSearchInput=()=>{
+    const searchInput=document.querySelector<HTMLElement>(".searchInput")
+    
+      searchInput!.style.display= "block"
+    
+  }
+  const handleDeleteSearchNavbar=()=>{
+    const searchInput=document.querySelector<HTMLElement>(".searchInput")
+    searchInput!.style.display="none"
+  }
   return (
     <>
+    <SearchComponent onClick={handleDeleteSearchNavbar} onBlur={(e)=>setValue(e.target.value)} className="searchInput"/>
       {/* هدر برای عرض بزرگتر از 800 پیکسل */}
-      <Container>
+      <Container style={{ display: "none" }} className={className}>
         <Box
           className={style.header2}
           style={{ position: "relative", width: "100%", left: "0", right: "0" }}
@@ -404,7 +423,7 @@ export const HeaderResponsive = () => {
                   cursor: "pointer",
                 }}
               />
-              <Box
+              {token ? null : <Box
                 component={"button"}
                 sx={{
                   cursor: "pointer",
@@ -418,10 +437,11 @@ export const HeaderResponsive = () => {
                 }}
               >
                 ورود / ثبت نام
-              </Box>
+              </Box>}
             </Box>
 
             <Box
+            onClick={handleSearchInput}
               className={style.searchNavbar}
               sx={{
                 overflow: "hidden",
@@ -507,9 +527,13 @@ export const HeaderResponsive = () => {
             />
             <Box sx={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
               <Typography
-              className="brandSubject"
+                className="brandSubject"
                 component={"a"}
-                sx={{ textDecoration: "none", color: "black" }}
+                sx={{
+                  textDecoration: "none",
+                  color: "black",
+                  paddingBottom: ".2rem",
+                }}
                 href=""
               >
                 برند ها
@@ -532,18 +556,19 @@ export const HeaderResponsive = () => {
           </Box>
           {/* نمایش برند ها  */}
           <Box
-          className={style.brand}
+            className={style.brand}
             sx={{
               width: "30rem",
               height: "20rem",
               backgroundColor: "rgb(250,250,250)",
-              boxShadow:"2px 2px 2px  rgb(230,230,230) , -2px -2px 2px rgb(230,230,230)",
+              boxShadow:
+                "2px 2px 2px  rgb(230,230,230) , -2px -2px 2px rgb(230,230,230)",
               zIndex: "20",
               position: "absolute",
-              top: "82%",
+              top: "78%",
               right: "28%",
               borderRadius: ".2rem",
-              display:"flex"
+              display: "flex",
             }}
           >
             <Box
@@ -614,24 +639,78 @@ export const HeaderResponsive = () => {
               />
             </Box>
             <Box
-            className={style.brandLogo}
+              className={style.brandLogo}
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 gap: ".5rem",
-                width:'60%',
-                height:'20rem',
-                overflowY:'auto', 
+                width: "60%",
+                height: "20rem",
+                overflowY: "auto",
                 padding: ".5rem",
               }}
             >
-              <Typography  component={"span"}>برند های بر گزیده</Typography>
-              <Box component={"img"} style={{width:'10rem', height:"3rem",border:'1px solid rgb(200,200,200)' }} src="https://www.banimode.com/img/m/1-brand-136x69.jpg" alt="جین وست"></Box>
-              <Box component={"img"} style={{width:'10rem', height:"3rem",border:'1px solid rgb(200,200,200)' }} src="https://www.banimode.com/img/m/2-brand-136x69.jpg" alt="جوتی جینز"></Box>
-              <Box component={"img"} style={{width:'10rem', height:"3rem",border:'1px solid rgb(200,200,200)' }} src="https://www.banimode.com/img/m/965-brand-136x69.jpg" alt="پری کاردین"></Box>
-              <Box component={"img"} style={{width:'10rem', height:"3rem",border:'1px solid rgb(200,200,200)' }} src="https://www.banimode.com/img/m/444-brand-136x69.jpg" alt="نوت"></Box>
-              <Box component={"img"} style={{width:'10rem', height:"3rem",border:'1px solid rgb(200,200,200)' }} src="https://www.banimode.com/img/m/614-brand-136x69.jpg" alt="ال سی ویکیلیس"></Box>
-              <Box component={"img"} style={{width:'10rem', height:"3rem",border:'1px solid rgb(200,200,200)' }} src="https://www.banimode.com/img/m/905-brand-136x69.jpg" alt="سیم"></Box>
+              <Typography component={"span"}>برند های بر گزیده</Typography>
+              <Box
+                component={"img"}
+                style={{
+                  width: "10rem",
+                  height: "3rem",
+                  border: "1px solid rgb(200,200,200)",
+                }}
+                src="https://www.banimode.com/img/m/1-brand-136x69.jpg"
+                alt="جین وست"
+              ></Box>
+              <Box
+                component={"img"}
+                style={{
+                  width: "10rem",
+                  height: "3rem",
+                  border: "1px solid rgb(200,200,200)",
+                }}
+                src="https://www.banimode.com/img/m/2-brand-136x69.jpg"
+                alt="جوتی جینز"
+              ></Box>
+              <Box
+                component={"img"}
+                style={{
+                  width: "10rem",
+                  height: "3rem",
+                  border: "1px solid rgb(200,200,200)",
+                }}
+                src="https://www.banimode.com/img/m/965-brand-136x69.jpg"
+                alt="پری کاردین"
+              ></Box>
+              <Box
+                component={"img"}
+                style={{
+                  width: "10rem",
+                  height: "3rem",
+                  border: "1px solid rgb(200,200,200)",
+                }}
+                src="https://www.banimode.com/img/m/444-brand-136x69.jpg"
+                alt="نوت"
+              ></Box>
+              <Box
+                component={"img"}
+                style={{
+                  width: "10rem",
+                  height: "3rem",
+                  border: "1px solid rgb(200,200,200)",
+                }}
+                src="https://www.banimode.com/img/m/614-brand-136x69.jpg"
+                alt="ال سی ویکیلیس"
+              ></Box>
+              <Box
+                component={"img"}
+                style={{
+                  width: "10rem",
+                  height: "3rem",
+                  border: "1px solid rgb(200,200,200)",
+                }}
+                src="https://www.banimode.com/img/m/905-brand-136x69.jpg"
+                alt="سیم"
+              ></Box>
             </Box>
           </Box>
           {/* نمایش دسته بندی وقتی که روی منوی همبر گر hover شد */}
