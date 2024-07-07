@@ -210,37 +210,37 @@ const Home: React.FC = () => {
           <Product
             alt="product image"
             href=""
-            src="https://www.banimode.com/img/cms/030119/1712473632.png"
+            src="public/imageForHome/image1/tishert.png"
             unicId=""
           />
           <Product
             alt="product image"
             href=""
-            src="https://www.banimode.com/img/cms/030119/1712473657.png"
+            src="public/imageForHome/image1/shalvar.png"
             unicId=""
           />
           <Product
             alt="product image"
             href=""
-            src="https://www.banimode.com/img/cms/021026/1705400638.jpg"
+            src="public/imageForHome/image1/lavazem.png"
             unicId=""
           />
           <Product
             alt="product image"
             href=""
-            src="https://www.banimode.com/img/cms/021026/1705400638.jpg"
+            src="public/imageForHome/image1/cart.png"
             unicId=""
           />
           <Product
             alt="product image"
             href=""
-            src="https://www.banimode.com/img/cms/020705/1695793509.jpg"
+            src="public/imageForHome/image1/accesory.png"
             unicId=""
           />
           <Product
             alt="product image"
             href=""
-            src="https://www.banimode.com/img/cms/020705/1695793518.jpg"
+            src="public/imageForHome/image1/atr.png"
             unicId=""
           />
         </Box>
@@ -292,7 +292,7 @@ const Home: React.FC = () => {
             {
               <ImgMediaCard
                 altForImage="ادوپریفرم زنانه نایس"
-                imageAddress="https://www.banimode.com/1557544-home_default/163900.jpg"
+                imageAddress="public/imageForHome/image2/img2.png"
                 description=" ادوپریفرم زنانه نایس پاپت
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
@@ -309,7 +309,7 @@ const Home: React.FC = () => {
                 percent="10%"
                 available="تعداد باقی مانده دو عدد"
                 altForImage="ادیپریفرم زنانه نایس"
-                imageAddress="https://www.banimode.com/1550038-home_default/154858.jpg"
+                imageAddress="public/imageForHome/image2/img1.png"
                 description=" ادوپریفرم زنانه نایس پاپت
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
@@ -324,7 +324,7 @@ const Home: React.FC = () => {
             {
               <ImgMediaCard
                 altForImage="ادیچریفرم زنانه نایس"
-                imageAddress="https://www.banimode.com/1683226-home_default/188200.jpg"
+                imageAddress="public/imageForHome/image2/img2.png"
                 description=" ادوپریفرم زنانه نایس پاپت
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
@@ -341,7 +341,7 @@ const Home: React.FC = () => {
                 percent="80%"
                 available="تعداد باقی مانده یک عدد"
                 altForImage="عکس محصول"
-                imageAddress="https://www.banimode.com/1012052-home_default/94138.jpg"
+                imageAddress="public/imageForHome/image2/img1.png"
                 description=" ادوپریفرم زنانه نایس پاپت
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
@@ -371,7 +371,7 @@ const Home: React.FC = () => {
             {
               <ImgMediaCard
                 altForImage="عکس محصول"
-                imageAddress="https://www.banimode.com/1683226-home_default/188200.jpg"
+                imageAddress="public/imageForHome/image2/img.png"
                 description=" ادوپریفرم زنانه نایس پاپت
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
@@ -386,7 +386,7 @@ const Home: React.FC = () => {
             {
               <ImgMediaCard
                 altForImage="عکس محصول"
-                imageAddress="https://www.banimode.com/1683226-home_default/188200.jpg"
+                imageAddress="public/imageForHome/image2/img4.png"
                 description=" ادوپریفرم زنانه نایس پاپت
           nice puppet مدل  rose حجم 100 میلی لیتر"
                 title1="Nice puppet"
@@ -464,7 +464,7 @@ const Home: React.FC = () => {
             style={{ cursor: "pointer" }}
             maxWidth="100%"
             component={"img"}
-            src="https://www.banimode.com/img/cms/030119/1712471931.jpg"
+            src="public/imageForHome/cartgift.png"
             alt="promotional banner"
           ></Box>
         </Box>

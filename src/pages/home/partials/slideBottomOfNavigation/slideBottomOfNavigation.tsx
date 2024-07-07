@@ -45,7 +45,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030321/1718020738.jpg"
+                  src="public/imageForHome/1720246391.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -74,7 +74,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717931594.jpg"
+                  src="public/imageForHome/1718368047.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -82,7 +82,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717927395.jpg"
+                  src="public/imageForHome/image.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -90,7 +90,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717931604.jpg"
+                  src="public/imageForHome/image2.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -123,7 +123,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717932354.jpg"
+                  src="public/imageForHome/image3.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -131,7 +131,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717931745.jpg"
+                  src="public/imageForHome/image4.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -139,7 +139,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717931604.jpg"
+                  src="public/imageForHome/image5.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -169,7 +169,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717932006.jpg"
+                  src="public/imageForHome/image6.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
@@ -177,7 +177,7 @@ export const SlideBottomOfNavigation = () => {
               <SwiperSlide>
                 <Box
                   component={"img"}
-                  src="https://www.banimode.com/img/cms/030320/1717927371.jpg"
+                  src="public/imageForHome/image6.png"
                   alt="image product"
                   sx={{ width: "100%", height: "20rem" }}
                 ></Box>
