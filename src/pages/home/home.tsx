@@ -1,8 +1,22 @@
 import style from "./home.module.css";
-import { Box, Button, Container, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  TextField,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import arrowLeftKey from "/icons/left-arrow-svgrepo-com.svg";
 import fireIcon from "/icons/fire.svg";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import CopyrightIcon from "@mui/icons-material/Copyright";
+
 import {
   AboutUs,
   BestSellers,
@@ -15,6 +29,7 @@ import {
   MaySlider,
   SelectedBrands,
   Services,
+  SlideBottomOfNavigation,
   Suggestion,
   TheNewest,
 } from "./partials";
@@ -25,16 +40,25 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { LabelBottomNavigation, SearchComponent } from "components";
+import {
+  FooterComponent,
+  LabelBottomNavigation,
+  Product,
+  SearchComponent,
+} from "components";
 import ClearIcon from "@mui/icons-material/Clear";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
 const Home: React.FC = () => {
   const [topValue, setTopValue] = useState<string>("2.5rem");
+  const [userEmail, setEmail] = useState<string>();
+  console.log(userEmail);
+  const handleGetUserEmail = () => {
+    if (!userEmail) return alert("ایمیل خالی است");
+  };
   const removeGifBanner = () => {
     document.getElementById("banner")!.style.display = "none";
     if (document.getElementById("banner")!.style.display === "none") {
@@ -53,7 +77,11 @@ const Home: React.FC = () => {
       ? (searchNavbar!.style.display = "none")
       : (searchNavbar!.style.display = "block");
   };
-
+  const handlehideSearchInput = () => {
+    const searchNavbar = document.getElementById("search");
+    searchNavbar!.style.display = "none";
+  };
+  const navigate=useNavigate()
   return (
     <>
       {/* تبلیغ چسبیده به بالای صفحه */}
@@ -128,7 +156,12 @@ const Home: React.FC = () => {
               component={"ul"}
             >
               <Box component={"li"}>
-                <FavoriteBorderIcon style={{ color: "rgb(80,80,80)" }} />
+                <FavoriteBorderIcon
+                  onClick={() => {
+                    navigate("/wishlist");
+                  }}
+                  style={{ color: "rgb(80,80,80)" }}
+                />
               </Box>
               <Box component={"li"}>
                 <SearchIcon
@@ -150,14 +183,68 @@ const Home: React.FC = () => {
             />
           </Box>
         </Box>
-        <SearchComponent />
+        <SearchComponent onClick={handlehideSearchInput} />
       </Box>
       {/* هدر رسپانسیو شده برای صفحات بزرگتر */}
-      <HeaderResponsive/>
-      
+      <HeaderResponsive className={style.header2} />
 
       {/* اسلایدر اول صفحه */}
-      <Box>{<MaySlider />}</Box>
+      <Box className={style.slider}>
+        <MaySlider />
+      </Box>
+      {/* اسلاید پایین نوار پیمایش برای صفحات بزرگتر از 800 پیکسل */}
+      <Container sx={{ display: "none" }} className={style.sliderAfter800px}>
+        <SlideBottomOfNavigation />
+        {/* محصولات پیشنهادی پایین اسلایدر */}
+        <Box
+          sx={{
+            width: "100%",
+            overflowX: "auto",
+            overflowY: "hidden",
+            marginTop: "1rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Product
+            alt="product image"
+            href=""
+            src="https://www.banimode.com/img/cms/030119/1712473632.png"
+            unicId=""
+          />
+          <Product
+            alt="product image"
+            href=""
+            src="https://www.banimode.com/img/cms/030119/1712473657.png"
+            unicId=""
+          />
+          <Product
+            alt="product image"
+            href=""
+            src="https://www.banimode.com/img/cms/021026/1705400638.jpg"
+            unicId=""
+          />
+          <Product
+            alt="product image"
+            href=""
+            src="https://www.banimode.com/img/cms/021026/1705400638.jpg"
+            unicId=""
+          />
+          <Product
+            alt="product image"
+            href=""
+            src="https://www.banimode.com/img/cms/020705/1695793509.jpg"
+            unicId=""
+          />
+          <Product
+            alt="product image"
+            href=""
+            src="https://www.banimode.com/img/cms/020705/1695793518.jpg"
+            unicId=""
+          />
+        </Box>
+      </Container>
       <Container style={{ position: "relative", marginTop: ".8rem" }}>
         {/* تایمر شمارش معکوس */}
         {<CountDownTimer />}
@@ -583,6 +670,7 @@ const Home: React.FC = () => {
         {/* فوتر سایت */}
 
         <Box
+          className={style.footer1}
           sx={{
             backgroundColor: "white",
             marginTop: "1.5rem",
@@ -615,12 +703,324 @@ const Home: React.FC = () => {
           </Container>
         </Box>
         {/* درباره ما */}
-        <Container>
+        <Container className={style.aboutUs}>
           <AboutUs />
         </Container>
       </Box>
       {/* نوار پیمایش پایین صفحه */}
-      <LabelBottomNavigation initialValue="خانه" />
+      <LabelBottomNavigation
+        className={style.bottomNavigation}
+        initialValue="خانه"
+      />
+      {/* وارد کردن آدرس ایمیل*/}
+      <Container style={{ display: "none" }} className={style.footerAfter800px}>
+        <Box
+          sx={{
+            width: "100%",
+            height: "15rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "rgba(240,240,240,.9)",
+          }}
+        >
+          <Typography variant="h4" component={"div"}>
+            ثبت نام در خبرنامه بانی مد
+          </Typography>
+          <Typography>
+            اولین نفری باشید که از جدید ترین محصولات ،جشنواره ها و فروش های ویژه
+            ما با خبر میشید
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: ".5rem",
+              marginTop: "2rem",
+            }}
+          >
+            <TextField
+              onBlur={(e) => setEmail(e.target.value)}
+              sx={{
+                width: "400px",
+                backgroundColor: "rgba(250,250,250,1)",
+              }}
+              type="email"
+              placeholder="آدرس ایمیل شما"
+            ></TextField>
+            <Button
+              onClick={handleGetUserEmail}
+              variant="contained"
+              style={{
+                backgroundColor: "green",
+                height: "100%",
+                borderRadius: "1rem",
+                width: "100px",
+              }}
+            >
+              ارسال
+            </Button>
+          </Box>
+        </Box>
+        {/* فوتر سایت */}
+        <Divider style={{ margin: "2rem 0 2rem 0" }} />
+        <Box sx={{ display: "flex", maxWidth: "100%", gap: "1rem" }}>
+          <Box sx={{ display: "flex", width: "75%", gap: ".1rem" }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "10rem",
+                height: "fit-content",
+                position: "relative",
+              }}
+            >
+              <Typography
+                variant="h6"
+                component={"div"}
+                color={"rgb(100,100,100)"}
+                position={"relative"}
+                fontSize={"1rem"}
+                style={{ top: "0", marginBottom: "1rem" }}
+              >
+                خرید از بانی مد
+              </Typography>
+              <FooterComponent
+                productSeggestion1="بانی مد"
+                href1=""
+                productSeggestion2="لباس زنانه"
+                href2=""
+                productSeggestion3="لباس بچه گانه"
+                href3=""
+                productSeggestion4="لوازم آرایشی"
+                href4=""
+                productSeggestion5="لباس مردانه"
+                href5=""
+              />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "10rem",
+                height: "fit-content",
+                position: "relative",
+              }}
+            >
+              <Typography
+                variant="h6"
+                component={"div"}
+                color={"rgb(100,100,100)"}
+                fontSize={"1rem"}
+                position={"relative"}
+                style={{ top: "0", marginBottom: "1rem" }}
+              >
+                خدمات مشتریان
+              </Typography>
+              <FooterComponent
+                productSeggestion1="پرسش های متداول"
+                href1=""
+                productSeggestion2="شرایط بازگشت"
+                href2=""
+                productSeggestion3="راهنمای خرید"
+                href3=""
+                productSeggestion4="فروش B2B"
+                href4=""
+              />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "10rem",
+                height: "fit-content",
+                position: "relative",
+                top: "0",
+              }}
+            >
+              <Typography
+                variant="h6"
+                component={"div"}
+                color={"rgb(100,100,100)"}
+                fontSize={"1rem"}
+                position={"relative"}
+                style={{ top: "0", marginBottom: "1rem" }}
+              >
+                اطلاعات بانی مد
+              </Typography>
+              <FooterComponent
+                productSeggestion1="درباره ما "
+                href1=""
+                productSeggestion2="قوانین و مقررات"
+                href2=""
+                productSeggestion3="تماس با ما"
+                href3=""
+                productSeggestion4="فرصت های شغلی"
+                href4=""
+                productSeggestion5="همکاری تجاری"
+              />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "15rem",
+                height: "fit-content",
+                position: "relative",
+                top: "0",
+              }}
+            >
+              <Typography
+                variant="h6"
+                component={"div"}
+                color={"rgb(100,100,100)"}
+                fontSize={"1rem"}
+                position={"relative"}
+                style={{ top: "0", marginBottom: "1rem" }}
+              >
+                منتظر شنیدن صدای گرمتان هستیم
+              </Typography>
+              <Typography component={"span"} color={"rgb(100,100,100)"}>
+                7روز هفته - 24 ساعته
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".5rem",
+                  marginTop: "1rem",
+                }}
+              >
+                <Typography component={"span"} style={{ fontSize: "1.4rem" }}>
+                  تلفن:
+                </Typography>
+                <Typography
+                  sx={{ "&:hover": { color: "green", cursor: "pointer" } }}
+                  fontSize="1rem"
+                >
+                  10003245
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".5rem",
+                  marginTop: ".5rem",
+                }}
+              >
+                <Typography component={"span"} style={{ fontSize: "1.4rem" }}>
+                  ایمیل:
+                </Typography>
+                <Typography
+                  sx={{ "&:hover": { color: "green", cursor: "pointer" } }}
+                  fontSize="1rem"
+                >
+                  mahdimoradi@gmail.com
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".5rem",
+                  marginTop: ".5rem",
+                }}
+              >
+                <Typography component={"span"} style={{ fontSize: "1.4rem" }}>
+                  پیامک:
+                </Typography>
+                <Typography
+                  sx={{ "&:hover": { color: "green", cursor: "pointer" } }}
+                  fontSize="1rem"
+                >
+                  103442
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+          <Box sx={{ width: "25%" }}>
+            <Box
+              sx={{ display: "flex", flexDirection: "column", gap: ".5rem" }}
+            >
+              <Button
+                style={{
+                  backgroundColor: "rgb(25, 177, 106) ",
+                  padding: ".8rem .9rem",
+                  color: "white",
+                  fontWeight: "bold",
+                  width: "100%",
+                }}
+              >
+                دریافت اپلیکیشن از
+                <Box
+                  style={{
+                    mixBlendMode: "color-burn",
+                  }}
+                  width={"3rem"}
+                  height={"1.5rem"}
+                  component={"img"}
+                  src="/icons/images.png"
+                  alt="کافه بازار"
+                ></Box>
+              </Button>
+              <Button
+                style={{
+                  outline: ".02rem solid #1ac977",
+                  padding: ".8rem .9rem",
+                  color: "rgb(25, 177, 106) ",
+                  fontWeight: "bold",
+                  width: "100%",
+                }}
+              >
+                <PhoneAndroidIcon style={{ color: "rgb(25, 177, 106) " }} />
+                دانلود اپلیکیشن
+              </Button>
+              <Box
+                sx={{
+                  marginTop: ".5rem",
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                  justifyContent: "space-evenly",
+                }}
+              >
+                <InstagramIcon style={{ cursor: "pointer" }} />
+                <TelegramIcon style={{ cursor: "pointer" }} />
+                <TwitterIcon style={{ cursor: "pointer" }} />
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+        <Divider style={{ margin: "2rem 0 2rem 0" }} />
+      </Container>
+      <Box
+        className={style.copyRight}
+        sx={{
+          display: "none",
+          position: "relative",
+          left: "0",
+          right: "0",
+          bottom: "0",
+          height: "5rem",
+          backgroundColor: "rgb(230,230,230)",
+        }}
+      >
+        <Container>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              padding: ".5rem",
+              gap: ".3rem",
+            }}
+          >
+            <CopyrightIcon />
+            <Typography>کلیه حقوق این وبسایت مال بانی مد است.</Typography>
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 };

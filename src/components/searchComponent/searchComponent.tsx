@@ -1,31 +1,57 @@
 import { Box, Divider, TextField, Typography } from "@mui/material";
 import { SuggestionComponen } from "./component";
 import ClearIcon from "@mui/icons-material/Clear";
+import style from "./searchComponent.module.css";
+type searchComponentType = {
+  className?: string;
+  onBlur?: (
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
 
-export const SearchComponent = () => {
-  const handleDeleteSearchNavbar = () => {
-    const searchNavbar = document.getElementById("search");
-    searchNavbar!.style.display = "none";
-  };
+export const SearchComponent: React.FC<searchComponentType> = ({
+  className,
+  onBlur,
+  onClick,
+}) => {
   return (
     <>
       <Box
-
+        className={`${className} ${style.searchnavbarBox}`}
         id="search"
         sx={{
-          display:'none',
-          position:'absolute',
+          display: "none",
+          position: "absolute",
           backgroundColor: "rgb(255,255,255)",
-          boxShadow:'10px 0 10px rgba(150,150,150,.5)',
+          boxShadow: "10px 0px 10px rgb(150,150,150) , -10px -0px 10px rgb(150,150,150)",
           width: "100%",
           padding: ".1rem .6rem .6rem .6rem",
+          zIndex: "20",
         }}
       >
+        {/* کادر جستجو برای صفحات بزرگتر از 800 پیکسل */}
+        <Box
+          className={style.searchNavbarAfter800px}
+          sx={{ display: "none", alignItems: "center", gap: "1rem" }}
+        >
+          <TextField
+            onBlur={onBlur}
+            placeholder="جستجو در میان هزاران کالا"
+            style={{ width: "100%" }}
+          />
+          <Box onClick={onClick}  component={"button"} sx={{ outline: "none", border: "none" }}>
+            <ClearIcon />
+          </Box>
+        </Box>
+        {/* نوار جستجو برای عرض کمتر از 800پیکسل */}
         <TextField
+          className={style.searchInput}
+          onBlur={onBlur}
           placeholder="جستجو در میان هزاران کالا"
           style={{ width: "100%" }}
         />
-        <Divider style={{ marginTop: ".8rem", width: "100%" }} />
+        <Divider  style={{ marginTop: ".8rem", width: "100%" }} />
 
         <Typography
           component={"span"}
@@ -53,9 +79,10 @@ export const SearchComponent = () => {
           <SuggestionComponen value="مانتو" />
           <SuggestionComponen value="بهبود" />
         </Box>
-        <Divider style={{ marginTop: ".8rem", width: "100%" }} />
+        <Divider className={style.divider} style={{ marginTop: ".8rem", width: "100%" }} />
 
         <Box
+          className={style.buttonClear}
           sx={{
             marginTop: ".5rem",
             display: "flex",
@@ -65,12 +92,12 @@ export const SearchComponent = () => {
           }}
         >
           <Box
-          component={"button"}
-          onClick={handleDeleteSearchNavbar}
+            component={"button"}
+            onClick={onClick}
             sx={{
-              backgroundColor:'inherit',
-              border:'none',
-              outline:'none',
+              backgroundColor: "inherit",
+              border: "none",
+              outline: "none",
               color: "red",
               display: "flex",
               alignItems: "center",

@@ -1,0 +1,10 @@
+@media only screen and (min-Width:800px){
+    .image{
+        width: 20rem !important;
+    }
+    .box{
+        width: 38px !important;
+        height: 38px !important;
+        border: 3px solid rgb(241, 100, 34);
+    }
+}

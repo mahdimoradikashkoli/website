@@ -11,7 +11,7 @@ export const AboutUs = () => {
     setShow(!show);
   };
   return (
-    <Box sx={{ marginTop: "1.5rem", width: "100%", position: "relative" }}>
+    <Box  sx={{ marginTop: "1.5rem", width: "100%", position: "relative" }}>
       <Typography fontWeight={"bold"}>درباره بانی مد</Typography>
       <Box
         sx={{
