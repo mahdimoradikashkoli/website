@@ -23,16 +23,15 @@ import {
   Stationery,
   WatchesAndJewelry,
 } from "./partials";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { headerResponsiveType } from "./type";
 import { SearchComponent } from "components";
-import  cookies  from 'js-cookie';
+import cookies from "js-cookie";
+import { instance } from "app/App";
 
 export const HeaderResponsive: React.FC<headerResponsiveType> = ({
   className,
 }) => {
-  const {value,setValue}=useState("")
-  console.log(value)
   useEffect(() => {
     const brand = document.querySelector<HTMLElement>(`.${style.brand}`);
     const brandSubject = document.querySelector<HTMLElement>(".brandSubject");
@@ -383,23 +382,34 @@ export const HeaderResponsive: React.FC<headerResponsiveType> = ({
       hidenCategory?.removeEventListener("mouseout", hideHidenCategory);
     };
   }, []);
-  const token=cookies.get("baniToken")
+  const token = cookies.get("baniToken");
+  const [searchValue, setSearchValue] = useState<string>("");
+  console.log(searchValue);
+  useEffect(() => {
+    const fetchData = async () => {
+      await instance.post("/search", searchValue);
+    };
+    fetchData;
+  }, []);
 
-  const handleSearchInput=()=>{
-    const searchInput=document.querySelector<HTMLElement>(".searchInput")
-    
-      searchInput!.style.display= "block"
-    
-  }
-  const handleDeleteSearchNavbar=()=>{
-    const searchInput=document.querySelector<HTMLElement>(".searchInput")
-    searchInput!.style.display="none"
-  }
+  const handleSearchInput = () => {
+    const searchInput = document.querySelector<HTMLElement>(".searchInput");
+
+    searchInput!.style.display = "block";
+  };
+  const handleDeleteSearchNavbar = () => {
+    const searchInput = document.querySelector<HTMLElement>(".searchInput");
+    searchInput!.style.display = "none";
+  };
   return (
     <>
-    <SearchComponent onClick={handleDeleteSearchNavbar} onBlur={(e)=>setValue(e.target.value)} className="searchInput"/>
+      <SearchComponent
+        onClick={handleDeleteSearchNavbar}
+        onChange={(e) => setSearchValue(e.target.value)}
+        className="searchInput"
+      />
       {/* هدر برای عرض بزرگتر از 800 پیکسل */}
-      <Container style={{ display: "none" }} className={className}>
+      <Container style={{ display: "none"}} className={className}>
         <Box
           className={style.header2}
           style={{ position: "relative", width: "100%", left: "0", right: "0" }}
@@ -423,25 +433,27 @@ export const HeaderResponsive: React.FC<headerResponsiveType> = ({
                   cursor: "pointer",
                 }}
               />
-              {token ? null : <Box
-                component={"button"}
-                sx={{
-                  cursor: "pointer",
-                  color: "white",
-                  backgroundColor: "#00bf6f",
-                  outline: "none",
-                  border: "none",
-                  borderRadius: "1.5rem",
-                  fontSize: "1.3rem",
-                  padding: ".8rem 1.4rem",
-                }}
-              >
-                ورود / ثبت نام
-              </Box>}
+              {token ? null : (
+                <Box
+                  component={"button"}
+                  sx={{
+                    cursor: "pointer",
+                    color: "white",
+                    backgroundColor: "#00bf6f",
+                    outline: "none",
+                    border: "none",
+                    borderRadius: "1.5rem",
+                    fontSize: "1.3rem",
+                    padding: ".8rem 1.4rem",
+                  }}
+                >
+                  ورود / ثبت نام
+                </Box>
+              )}
             </Box>
 
             <Box
-            onClick={handleSearchInput}
+              onClick={handleSearchInput}
               className={style.searchNavbar}
               sx={{
                 overflow: "hidden",

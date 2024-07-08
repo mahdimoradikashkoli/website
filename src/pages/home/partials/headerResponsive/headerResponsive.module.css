@@ -44,7 +44,7 @@
 .newest {
   display: none !important;
 }
-.brand{
+.brand {
   display: none !important;
 }
 .grouping {
@@ -102,7 +102,7 @@
   background-color: rgb(17, 154, 22);
   border-radius: 5px;
 }
-.brandLogo::-webkit-scrollbar{
+.brandLogo::-webkit-scrollbar {
   width: 8px; /* عرض اسکرول‌بار */
   background-color: rgb(172, 172, 163);
   border-radius: 2px;
