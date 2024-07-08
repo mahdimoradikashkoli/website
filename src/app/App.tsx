@@ -11,6 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Box, Switch, useMediaQuery } from "@mui/material";
 import { ImgMediaCard } from "pages/home/partials";
 import axios from "axios"
+import toast from "react-hot-toast";
 
 export const instance=axios.create({
   baseURL: 'http://localhost:4005',
@@ -19,6 +20,22 @@ export const instance=axios.create({
     "Accept":"application/json",
   
   }
+})
+instance.interceptors.request.use( function (config) {
+    console.log('Request Config:', config)
+    return config
+},function(error){
+  console.log('Request Error:', error)
+  return Promise.reject(error);
+})
+
+instance.interceptors.response.use(function(response){
+  console.log("response",response)
+  return response
+},function (error){
+  console.log("responce error",error.code)
+  if( error.code === "ERR_NETWORK") return toast.error("سرور قادر به پاسخگویی نیست")
+    if( error.code >= 500) return toast.error("سرور خاموش است")
 })
 
 const App: React.FC = () => {

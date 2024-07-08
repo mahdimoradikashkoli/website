@@ -15,6 +15,7 @@ export const CardTwo: React.FC<cardTwoType> = ({
         borderRadius: ".3rem",
         height: "11.25rem",
         backgroundColor: "white",
+        cursor:'pointer'
       }}
     >
       <Box sx={{overflow:"hidden",width:"100%",borderRadius: ".3rem"}}>

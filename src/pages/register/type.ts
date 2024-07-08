@@ -4,4 +4,5 @@ export type loginAndRegisterType = {
     // style?:any
     handleOnClick?: React.MouseEventHandler<any>;
     showLoginForm:any
+    handleShowTermsAndRules:React.MouseEventHandler<HTMLButtonElement>
   };

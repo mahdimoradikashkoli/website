@@ -1,14 +1,32 @@
 import { Box, Container, Typography } from "@mui/material";
-import { Navigation } from "components";
-import {handleBackAddresstype} from "./type"
+import { Footer, Navigation } from "components";
+import { handleBackAddresstype } from "./type";
+import { HeaderResponsive } from "pages/home/partials";
+import style from "./termsAndRules.module.css";
 
-export const TermsAndRules:React.FC<handleBackAddresstype> = ({handleBackAddress}) => {
+export const TermsAndRules: React.FC<handleBackAddresstype> = ({
+  handleBackAddress,
+}) => {
   return (
     <>
-      <Navigation backAddress={handleBackAddress} titleOfPage="قوانین و شرایط" className={{position:"absolute",}}/>
-      <Container sx={{marginTop:'4rem'}}>
+      <HeaderResponsive className={style.headerResponsive} />
+      <Box className={style.navigation}>
+        <Navigation
+          backAddress={handleBackAddress}
+          titleOfPage="قوانین و شرایط"
+          className={{ position: "absolute" }}
+        />
+      </Box>
+      <Container className={style.container} sx={{ marginTop: "4rem" }}>
         <Box>
-          <Typography sx={{color:'rgb(80,80,80)',lineHeight:'1.7rem',wordSpacing:'.3rem',marginBottom:'1rem'}}>
+          <Typography
+            sx={{
+              color: "rgb(80,80,80)",
+              lineHeight: "1.7rem",
+              wordSpacing: ".3rem",
+              marginBottom: "1rem",
+            }}
+          >
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
             استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
@@ -21,7 +39,13 @@ export const TermsAndRules:React.FC<handleBackAddresstype> = ({handleBackAddress
             حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود
             طراحی اساسا مورد استفاده قرار گیرد.
           </Typography>
-          <Typography  sx={{color:'rgb(80,80,80)',lineHeight:'1.7rem',wordSpacing:'.3rem'}}>
+          <Typography
+            sx={{
+              color: "rgb(80,80,80)",
+              lineHeight: "1.7rem",
+              wordSpacing: ".3rem",
+            }}
+          >
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
             استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
             ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
@@ -36,6 +60,7 @@ export const TermsAndRules:React.FC<handleBackAddresstype> = ({handleBackAddress
           </Typography>
         </Box>
       </Container>
+      <Footer />
     </>
   );
 };

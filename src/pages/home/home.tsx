@@ -107,7 +107,7 @@ const Home: React.FC = () => {
             width: "100%",
             height: "40px",
           }}
-          src="https://www.banimode.com/img/cms/030229/1716020397.gif"
+          src="public/imageForHome/gif/1716020397.gif"
           alt="promition banner"
         />
 

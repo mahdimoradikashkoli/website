@@ -1,19 +1,21 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Divider, TextField, Typography } from "@mui/material";
 import { SuggestionComponen } from "./component";
 import ClearIcon from "@mui/icons-material/Clear";
 import style from "./searchComponent.module.css";
 type searchComponentType = {
   className?: string;
-  onBlur?: (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  onChange?: (
+    e: React.FocusEvent<HTMLInputElement>
   ) => void;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  // validation:any
 };
 
 export const SearchComponent: React.FC<searchComponentType> = ({
   className,
-  onBlur,
   onClick,
+  onChange
 }) => {
   return (
     <>
@@ -36,9 +38,9 @@ export const SearchComponent: React.FC<searchComponentType> = ({
           sx={{ display: "none", alignItems: "center", gap: "1rem" }}
         >
           <TextField
-            onBlur={onBlur}
             placeholder="جستجو در میان هزاران کالا"
             style={{ width: "100%" }}
+            onChange={onChange}
           />
           <Box onClick={onClick}  component={"button"} sx={{ outline: "none", border: "none" }}>
             <ClearIcon />
@@ -47,7 +49,7 @@ export const SearchComponent: React.FC<searchComponentType> = ({
         {/* نوار جستجو برای عرض کمتر از 800پیکسل */}
         <TextField
           className={style.searchInput}
-          onBlur={onBlur}
+          onChange={onChange}
           placeholder="جستجو در میان هزاران کالا"
           style={{ width: "100%" }}
         />
