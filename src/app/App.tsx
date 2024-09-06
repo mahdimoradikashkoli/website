@@ -5,6 +5,8 @@ import { Suspense, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 const Home = React.lazy(() => import("../pages/home/home"));
 const WishList = React.lazy(() => import("../pages/wishList/wishList"));
+const ProfileLayout=React.lazy(()=> import("../components/ProfileLayout/ProfileLayout"))
+const Profile=React.lazy(()=>import("pages/profile/profile"))
 // import { Box } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -72,7 +74,17 @@ const App: React.FC = () => {
             </>
           }
         />
-        <Route
+        <Route path="/profile" element={<Suspense fallback={loading()}>
+          <ProfileLayout/>
+        </Suspense>}
+        children={
+          <Route
+          path="/profile" element={<Suspense fallback={loading()}>
+            <Profile/>
+          </Suspense>}/>
+        }
+        />
+        {/* <Route
           path="/"
           element={
             <Suspense>
@@ -89,7 +101,7 @@ const App: React.FC = () => {
               }
             />
           }
-        />
+        /> */}
       </Routes>
     </Router>
   );

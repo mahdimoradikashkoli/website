@@ -58,7 +58,7 @@
 }
 
 .grouping::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 2px; /* قرار دادن pseudo-element در پایین */
   left: 0;
