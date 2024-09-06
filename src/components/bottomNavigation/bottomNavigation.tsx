@@ -6,35 +6,14 @@ import CategoryIcon from '@mui/icons-material/Category';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from "react-router-dom";
 interface NavigationProps {
-  initialValue: string;
-  className:string
+  initialValue?: React.ReactNode;
+  className?:string
 }
 export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue,className}) => {
-  // مقدار اولیه را از Local Storage بخوانید یا "خانه" را به عنوان مقدار پیش‌فرض تنظیم کنید
-  const [value, setValue] = React.useState(() => {
-    return localStorage.getItem("navigationValue") || "خانه";
-  });
-
-  const handleChange = (event: React.SyntheticEvent, initialValue: string) => {
-    setValue(initialValue);
-    // مقدار جدید را در Local Storage ذخیره کنید
-    localStorage.setItem("navigationValue", initialValue);
-  };
-
-  // پاک کردن Local Storage وقتی که کاربر سایت را می‌بندد
-  // React.useEffect(() => {
-  //   const handleUnload = () => {
-  //     localStorage.removeItem("navigationValue");
-  //   };
-
-  //   window.addEventListener("beforeunload", handleUnload);
-
-  //   // Cleanup listener on component unmount
-  //   return () => {
-  //     window.removeEventListener("beforeunload", handleUnload);
-  //   };
-  // }, []);
+ 
+  const navigate=useNavigate()
 
   return (
     <BottomNavigation
@@ -50,10 +29,10 @@ export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue,c
         right:'0',
         zIndex:'10',
       }}
-      value={value}
-      onChange={handleChange}
+      value={initialValue}
     >
       <BottomNavigationAction
+      onClick={()=>navigate("/")}
         label="خانه"
         value="خانه"
         icon={<HomeIcon />}
@@ -69,6 +48,7 @@ export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue,c
         icon={<ShoppingBasketIcon />}
       />
       <BottomNavigationAction
+      onClick={()=> navigate("/profile")}
         label="پروفایل"
         value="پروفایل"
         icon={<PersonOutlineIcon />}
