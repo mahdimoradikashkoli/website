@@ -43,6 +43,7 @@ export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue,c
         icon={<CategoryIcon />}
       />
       <BottomNavigationAction
+      onClick={()=>navigate("/shoppingcard")}
         label="سبد خرید"
         value="سبد خرید"
         icon={<ShoppingBasketIcon />}
