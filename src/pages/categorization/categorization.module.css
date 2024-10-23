@@ -1,0 +1,59 @@
+@media only screen and (min-width: 800px) {
+  .bottomNavigation {
+    display: none !important;
+  }
+  .banner {
+    position: relative !important;
+  }
+  .clearIcon {
+    display: none !important;
+  }
+  .grouping{
+    display:none ;
+  }
+  .header{
+    display: none;
+  }
+  .header2{
+    display:block !important;
+  }
+  .notFound{
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .header1 {
+    display: block;
+    position: sticky;
+  }
+  .banner {
+    position: sticky !important;
+  }
+  .header2 {
+    display: none;
+  }
+  .searchInput {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 2.7rem;
+  }
+  
+}
+@media only screen and (max-width:500px){
+  .productTitle{
+    width: 25% !important;
+  }
+  .product{
+    width:75% !important;
+  }
+}
+.productTitle::-webkit-scrollbar{
+  display: none !important;
+  scrollbar-width:none
+}
+.product::-webkit-scrollbar{
+  display: none !important;
+  scrollbar-width:none
+}
