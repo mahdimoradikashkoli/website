@@ -23,7 +23,8 @@
     "paths": {
       "@ui/*": ["modules/helpers/ui"],
       "@atom": ["modules/atoms"],
-      "@ui/themes":["modules/helpers/ui/thems"]
+      "@ui/themes":["modules/helpers/ui/thems"],
+      "@productTitle":["components/productTitle/productTitle"]
     }
   },
   "include": ["src"],

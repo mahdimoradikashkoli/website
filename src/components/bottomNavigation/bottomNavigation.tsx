@@ -38,6 +38,7 @@ export const LabelBottomNavigation: React.FC<NavigationProps> = ({initialValue,c
         icon={<HomeIcon />}
       />
       <BottomNavigationAction
+      onClick={()=>navigate("/categorization")}
         label="دسته بندی ها"
         value="دسته بندی ها"
         icon={<CategoryIcon />}
