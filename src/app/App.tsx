@@ -11,13 +11,25 @@ const ProfileLayout = React.lazy(
 const Profile = React.lazy(() => import('pages/profile/profile'));
 // import { Box } from "@mui/material";
 
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import { Box, Switch, useMediaQuery } from "@mui/material";
-import { ImgMediaCard } from "pages/home/partials";
+
+import { Box,  } from "@mui/material";
 import axios from "axios";
 import toast from "react-hot-toast";
 import  cookies  from 'js-cookie';
+const CategorizationLayout = React.lazy(
+  () => import('components/Categorization/Categorization')
+);
+const Categorization = React.lazy(
+  () => import('../pages/categorization/categorization')
+);
+const ShoppingCartLayout = React.lazy(
+  () => import('../components/shoppingCartLayout/shoppingCartLayout')
+);
+const ShoppingCart = React.lazy(
+  () => import('../pages/shoppingCart/shoppingCart')
+);
+
+import { HomeSkeletone } from './skeletones';
 
 export const instance = axios.create({
   baseURL: "http://localhost:4005",
