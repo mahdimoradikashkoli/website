@@ -55,6 +55,7 @@ import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
   const [topValue, setTopValue] = useState<string>("2.5rem");
   const [userEmail, setEmail] = useState<string>();
+  
   console.log(userEmail);
   const handleGetUserEmail = () => {
     if (!userEmail) return alert("ایمیل خالی است");
@@ -81,9 +82,16 @@ const Home: React.FC = () => {
     const searchNavbar = document.getElementById("search");
     searchNavbar!.style.display = "none";
   };
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+
+
+
+  
+
   return (
     <>
+    
+
       {/* تبلیغ چسبیده به بالای صفحه */}
       <Box
         id="banner"
@@ -186,7 +194,9 @@ const Home: React.FC = () => {
         <SearchComponent onClick={handlehideSearchInput} />
       </Box>
       {/* هدر رسپانسیو شده برای صفحات بزرگتر */}
-      <HeaderResponsive className={style.header2} />
+      <HeaderResponsive
+        className={style.header2}
+      />
 
       {/* اسلایدر اول صفحه */}
       <Box className={style.slider}>

@@ -1,3 +1,3 @@
 export type headerResponsiveType={
-    className:string
+    className:string,
   }
