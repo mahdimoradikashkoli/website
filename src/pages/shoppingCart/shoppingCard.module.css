@@ -1,0 +1,25 @@
+@media only screen and (min-width: 800px) {
+  .headerResponsive {
+    display: block !important;
+  }
+  .navigation {
+    display: none !important;
+  }
+  .bottomNavigation {
+    display: none !important;
+  }
+  .shoppingCard {
+    height: 18rem !important;
+  }
+  .container {
+    margin-top: 0rem !important;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .shoppingCard {
+    height: 100vh;
+  }
+  .container {
+    margin-top: 3.3rem;
+  }
+}

@@ -1,11 +1,16 @@
-import React from "react";
+import React from 'react';
 
-const Layout = React.lazy(() => import("components/Layout/Layout"));
-import { Suspense, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-const Home = React.lazy(() => import("../pages/home/home"));
-const WishList = React.lazy(() => import("../pages/wishList/wishList"));
+const Layout = React.lazy(() => import('components/Layout/Layout'));
+import { Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+const Home = React.lazy(() => import('../pages/home/home'));
+const WishList = React.lazy(() => import('../pages/wishList/wishList'));
+const ProfileLayout = React.lazy(
+  () => import('../components/ProfileLayout/ProfileLayout')
+);
+const Profile = React.lazy(() => import('pages/profile/profile'));
 // import { Box } from "@mui/material";
+
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box, Switch, useMediaQuery } from "@mui/material";
@@ -30,12 +35,14 @@ instance.interceptors.request.use(
   },
   function (error) {
     console.log("Request Error:", error);
+
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
   function (response) {
+
     console.log("response", response);
     return response;
   },
@@ -46,13 +53,18 @@ instance.interceptors.response.use(
       return toast.error("سرور قادر به پاسخگویی نیست");
     if (error.code >= 500) return toast.error("سرور خاموش است");
     return Promise.reject(error);
+
+   
+
   }
 );
 
 const App: React.FC = () => {
   const loading = () => {
     return (
+
       <Box sx={{ width: "100%", textAlign: "center" }} fontSize={"2rem"}>
+
         ...Loading
       </Box>
     );
@@ -60,10 +72,11 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
+        {/* layout for home */}
         <Route
           path="/"
           element={
-            <Suspense fallback={loading()}>
+            <Suspense fallback={<HomeSkeletone/>}>
               <Layout />
             </Suspense>
           }
@@ -72,7 +85,7 @@ const App: React.FC = () => {
               <Route
                 path="/"
                 element={
-                  <Suspense>
+                  <Suspense fallback={<HomeSkeletone/>}>
                     <Home />
                   </Suspense>
                 }
@@ -86,21 +99,62 @@ const App: React.FC = () => {
                 }
               />
             </>
+
           }
         />
+        {/* profile layout */}
         <Route
-          path="/"
+          path="/profile"
           element={
-            <Suspense>
-              <Layout />
+            <Suspense fallback={loading()}>
+              <ProfileLayout />
             </Suspense>
           }
           children={
             <Route
-              path="/card"
+              path="/profile"
               element={
-                <Suspense>
-                  <ImgMediaCard />
+                <Suspense fallback={loading()}>
+                  <Profile />
+                </Suspense>
+              }
+            />
+
+          }
+        />
+        {/*shoppingcard lauout*/}
+        <Route
+          path="/shoppingcard"
+          element={
+            <Suspense fallback={loading()}>
+              <ShoppingCartLayout />
+            </Suspense>
+          }
+          children={
+            <Route
+              path="/shoppingcard"
+              element={
+                <Suspense fallback={loading()}>
+                  <ShoppingCart />
+                </Suspense>
+              }
+            />
+          }
+        />
+        {/* CategorizationLayout */}
+        <Route
+          path="/categorization"
+          element={
+            <Suspense fallback={loading()}>
+              <CategorizationLayout />
+            </Suspense>
+          }
+          children={
+            <Route
+              path="/categorization"
+              element={
+                <Suspense fallback={loading()}>
+                  <Categorization />
                 </Suspense>
               }
             />
