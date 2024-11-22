@@ -12,3 +12,5 @@ export * from "./Services";
 export * from "./aboutUs";
 export * from "./headerResponsive";
 export * from "./slideBottomOfNavigation";
+export * from "./signIn";
+export * from "./signUp";

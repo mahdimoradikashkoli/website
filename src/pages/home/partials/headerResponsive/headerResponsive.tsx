@@ -13,6 +13,7 @@ import ChairIcon from "@mui/icons-material/Chair";
 import ToysIcon from "@mui/icons-material/Toys";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import AddchartIcon from "@mui/icons-material/Addchart";
+import PersonIcon from "@mui/icons-material/Person";
 import {
   ChildrenAndEntertainment,
   DigitalGoods,
@@ -25,13 +26,17 @@ import {
 } from "./partials";
 import { useEffect, useState } from "react";
 import { headerResponsiveType } from "./type";
-import { SearchComponent } from "components";
+import { ModalOverlay, SearchComponent } from "components";
 import cookies from "js-cookie";
 import { instance } from "app/App";
+import { SignIn } from "../signIn";
+import { SignUp } from "../signUp";
 
 export const HeaderResponsive: React.FC<headerResponsiveType> = ({
   className,
 }) => {
+  const token = cookies.get("baniToken");
+
   useEffect(() => {
     const brand = document.querySelector<HTMLElement>(`.${style.brand}`);
     const brandSubject = document.querySelector<HTMLElement>(".brandSubject");
@@ -382,8 +387,9 @@ export const HeaderResponsive: React.FC<headerResponsiveType> = ({
       hidenCategory?.removeEventListener("mouseout", hideHidenCategory);
     };
   }, []);
-  const token = cookies.get("baniToken");
+
   const [searchValue, setSearchValue] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState("");
   console.log(searchValue);
   useEffect(() => {
     const fetchData = async () => {
@@ -401,15 +407,55 @@ export const HeaderResponsive: React.FC<headerResponsiveType> = ({
     const searchInput = document.querySelector<HTMLElement>(".searchInput");
     searchInput!.style.display = "none";
   };
+
+  const fetchdata = async () => {
+    const res = await instance.get("/");
+    console.log(res);
+  };
+  token && fetchdata();
+
+  const handlShowLogin = () => {
+    setIsModalOpen("login");
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleShowRegister = () => {
+    setIsModalOpen("register");
+    document.body.style.overflow = "hidden";
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen("nothong");
+    document.body.style.overflow = "auto";
+  };
+
   return (
     <>
+      {/* فرایند ثبنام و لاگین در صفحه هوم */}
+
+      {isModalOpen === "login" && (
+        <SignIn
+          removeRegisterModal={handleCloseModal}
+          removeLoginAndShowLogin={handleShowRegister}
+        />
+      )}
+      {/*  وقتی که لاگین وریجستر باز شده باشد ModalOverlay  نمایش پوشش  */}
+      {(isModalOpen === "login" || isModalOpen === "register") && (
+        <ModalOverlay />
+      )}
+      {isModalOpen === "register" && (
+        <SignUp
+          removeRegisterModal={handleCloseModal}
+          removeRegisterAndShowLogin={handlShowLogin}
+          showLoginAfterRegister={handlShowLogin}
+        />
+      )}
       <SearchComponent
         onClick={handleDeleteSearchNavbar}
         onChange={(e) => setSearchValue(e.target.value)}
         className="searchInput"
       />
       {/* هدر برای عرض بزرگتر از 800 پیکسل */}
-      <Container style={{ display: "none"}} className={className}>
+      <Container style={{ display: "none" }} className={className}>
         <Box
           className={style.header2}
           style={{ position: "relative", width: "100%", left: "0", right: "0" }}
@@ -433,8 +479,21 @@ export const HeaderResponsive: React.FC<headerResponsiveType> = ({
                   cursor: "pointer",
                 }}
               />
-              {token ? null : (
+              {token ? (
                 <Box
+                  sx={{
+                    display: "flex",
+                    gap: ".3rem",
+                    marginRight: "2rem",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Typography>mahdi</Typography>
+                  <PersonIcon />
+                </Box>
+              ) : (
+                <Box
+                  onClick={handlShowLogin}
                   component={"button"}
                   sx={{
                     cursor: "pointer",

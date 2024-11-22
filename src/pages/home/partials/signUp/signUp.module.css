@@ -1,0 +1,6 @@
+.signUp::-webkit-scrollbar{
+display: none;
+}
+.signUp{
+    scrollbar-width: none;
+    }
